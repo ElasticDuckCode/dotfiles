@@ -42,3 +42,7 @@ vim.opt.splitbelow = true
 
 -- buffers
 vim.opt.hidden = true
+
+-- emacs like scrolling
+vim.opt.scrolljump = -30  
+vim.opt.scrolloff = 1
