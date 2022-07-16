@@ -1,11 +1,11 @@
 --
 -- nvim configuration file
 --
-
 require('plugins')
 
 
 -- leader key
+vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', {noremap = true})
 vim.g.mapleader = ' '
 
 -- colors
@@ -13,6 +13,11 @@ vim.wo.colorcolumn = '81'
 vim.o.background = 'dark'
 vim.g.tokyonight_style = 'night'
 vim.cmd[[colorscheme tokyonight]]
+
+-- disable arrow keys
+for _, key in ipairs({'<Up>', '<Down>', '<Left>', '<Right>'}) do
+    vim.keymap.set({'', '!'}, key, '<Nop>', {noremap = true})
+end
 
 -- indentation
 vim.opt.tabstop = 4
@@ -43,6 +48,6 @@ vim.opt.splitbelow = true
 -- buffers
 vim.opt.hidden = true
 
--- emacs like scrolling
-vim.opt.scrolljump = -30  
+-- scrolling
 vim.opt.scrolloff = 1
+vim.opt.scrolljump = -30  
