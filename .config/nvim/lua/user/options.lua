@@ -1,8 +1,7 @@
 -- colors
 vim.wo.colorcolumn = '121'
 vim.o.background = 'dark'
-vim.g.tokyonight_style = 'night'
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme tokyonight-night]]
 
 -- indentation
 vim.opt.tabstop = 4
