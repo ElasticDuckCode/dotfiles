@@ -6,6 +6,7 @@
 
 # add binary files to path
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.opt/bin:$PATH"
 
 # edit terminal color settings
 export TERM=xterm-256color
@@ -25,4 +26,32 @@ zmodload zsh/complist
 compinit
 promptinit
 
+# use neovim instead of vim
+if whence "nvim" > /dev/null; then
+	alias vim="nvim"
+fi
+
+# aliases
+alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+alias update-nvim="curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && mv nvim.appimage $HOME/.opt/bin/nvim && chmod u+x $HOME/.opt/bin/nvim"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jake/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jake/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/jake/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jake/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/jake/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/jake/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
