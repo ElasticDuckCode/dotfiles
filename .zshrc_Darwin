@@ -1,0 +1,69 @@
+#
+# ~/.zshrc
+#
+
+# add binary files to path
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export CPATH="/opt/homebrew/include:$CPATH"
+export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
+
+# edit terminal color settings
+export CLICOLOR=1
+export TERM=xterm-256color
+
+# custom prompt
+PROMPT='%F{yellow}%n@%F{red}%m%f:%F{cyan}%(4~|.../%3~|%~)%f%# '
+
+# zsh syntax highlighting and autosuggestions
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh tab completion
+autoload -Uz compinit promptinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+promptinit
+
+# use neovim instead of vim
+if whence "nvim" > /dev/null; then
+	alias vim="nvim"
+fi
+
+# macos brew llvm config
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# manage arm and x86 conda versions
+alias conda_arm=/Users/jake/mambaforge/arm64/bin/conda
+alias conda_x86=/Users/jake/mambaforge/x86/bin/conda
+
+# custom aliases
+alias ucsdvpn="sudo openconnect --user=jmillhis vpn.ucsd.edu"
+#alias ls="ls -1 --color=auto | sort -n"
+alias ls="ls -1 --color=auto"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jake/mambaforge/arm64/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jake/mambaforge/arm64/etc/profile.d/conda.sh" ]; then
+        . "/Users/jake/mambaforge/arm64/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jake/mambaforge/arm64/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/jake/mambaforge/arm64/etc/profile.d/mamba.sh" ]; then
+    . "/Users/jake/mambaforge/arm64/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
