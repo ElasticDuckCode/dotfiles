@@ -1,0 +1,28 @@
+#
+# ~/.zshrc-Linux
+#
+# Configure zshrc specific to Linux
+#
+
+# add binary files to path
+export PATH="/usr/local/bin:$PATH"
+
+# edit terminal color settings
+export TERM=xterm-256color
+
+# custom prompt
+PROMPT='%F{yellow}%n@%F{red}%m%f:%F{cyan}%(4~|.../%3~|%~)%f%# '
+
+# zsh syntax highlighting and autosuggestions
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/share/zsh-syntax-highlighting/highlighters
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh tab completion
+autoload -Uz compinit promptinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+promptinit
+
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
