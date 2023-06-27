@@ -14,7 +14,7 @@ window:
 font:
   normal: 
     family: JetBrains Mono
-    style: Medium
+    style: Semibold
   bold:
     family: JetBrains Mono
     style: Bold
@@ -26,8 +26,8 @@ font:
     style: Bold Italic
 
   size: 10.0
-  use_this_strokes: true
-  builtin_box_drawing: true
+  AppleFontSmoothing: true
+  builtin_box_drawing: false
   draw_bold_text_with_bright_colors: true
 
 
@@ -40,6 +40,9 @@ shell:
   program: /bin/zsh
   args:
     - --login
+    - -l
+    - -c
+    - "tmux attach || tmux"
 
 
 live_config_reload: true
