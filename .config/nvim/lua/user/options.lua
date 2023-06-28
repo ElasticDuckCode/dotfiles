@@ -1,7 +1,7 @@
 -- colors
 vim.wo.colorcolumn = '121'
 vim.o.background = 'dark'
-vim.cmd[[colorscheme rose-pine]]
+vim.cmd [[colorscheme rose-pine]]
 
 -- indentation
 vim.opt.tabstop = 4
@@ -13,7 +13,7 @@ vim.opt.smartindent = true
 
 -- undo file
 vim.opt.swapfile = false --not once have I needed them, yet they annoy me always
-vim.opt.undodir = os.getenv("HOME")..'/.local/share/nvim/undodir'
+vim.opt.undodir = os.getenv("HOME") .. '/.local/share/nvim/undodir'
 vim.opt.undofile = true
 
 -- line wrapping

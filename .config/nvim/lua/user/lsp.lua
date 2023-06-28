@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero').preset({})
+local _border = "single"
 
 -- Minimial lsp-zero config
 lsp.on_attach(function(client, bufnr)
@@ -21,8 +22,19 @@ cmp.setup({
         -- Navigate between snippet placeholder
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
         ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+    },
+    window = {
+        completion = cmp.config.window.bordered({
+            border = _border,
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+        }),
+        documentation = cmp.config.window.bordered({
+            border = _border,
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+        }),
     }
 })
+
 
 -- Autoformatting on save
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -36,9 +48,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
---local lspconfig = require('lspconfig')
---local coq = require('coq')
---
---lspconfig.clangd.setup{}
---lspconfig.pylsp.setup(coq.lsp_ensure_capabilities())
---
+
+
+-- floating window highlight
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, {
+        border = _border,
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+    }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, {
+        border = _border,
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+    }
+)
+
+vim.diagnostic.config {
+    float = {
+        border = _border,
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+    }
+}
