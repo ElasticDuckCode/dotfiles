@@ -11,6 +11,7 @@ return require('packer').startup(
         use 'folke/tokyonight.nvim'
         use 'rose-pine/neovim'
         use 'sainnhe/everforest'
+        use 'neanias/everforest-nvim'
 
         -- Tmux Integration
         use 'christoomey/vim-tmux-navigator'

@@ -37,7 +37,6 @@ fi
 # aliases
 alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
-alias update-nvim="curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && mv nvim.appimage $HOME/.opt/bin/nvim && chmod u+x $HOME/.opt/bin/nvim"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
