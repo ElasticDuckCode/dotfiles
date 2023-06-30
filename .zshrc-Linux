@@ -29,7 +29,10 @@ promptinit
 # use neovim instead of vim
 if whence "nvim" > /dev/null; then
 	alias vim="nvim"
+    export VISUAL=nvim
+    export EDITOR="$VISUAL"
 fi
+
 
 # aliases
 alias ls="ls -1 --color=auto"
