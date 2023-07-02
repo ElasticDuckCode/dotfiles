@@ -34,3 +34,6 @@ vim.opt.hidden = true
 -- scrolling
 vim.opt.scrolljump = -40
 vim.opt.scrolloff = 1
+
+-- statusline
+vim.opt.showmode = true

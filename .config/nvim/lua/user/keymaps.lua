@@ -3,8 +3,7 @@ vim.keymap.set('n', '<Space>', '<Nop>', { noremap = true })
 vim.g.mapleader = ' '
 
 -- file shortcuts
-vim.keymap.set('n', '<leader><Tab>v', '<CMD>e $MYVIMRC<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader><Tab>p', '<CMD>e ~/.config/nvim/<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ev', '<CMD>e ~/.config/nvim/<CR>', { noremap = true, silent = true })
 
 -- disable arrow keys
 for _, key in ipairs({ '<Up>', '<Down>', '<Left>', '<Right>' }) do
