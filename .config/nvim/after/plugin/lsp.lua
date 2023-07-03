@@ -49,6 +49,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 
+-- disable visual mode lsp doc, as often mistaking pressed
+vim.keymap.set('v', 'K', '', { noremap = true })
+
 
 -- floating window highlight
 

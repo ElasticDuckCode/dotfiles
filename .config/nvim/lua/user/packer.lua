@@ -41,7 +41,6 @@ return require('packer').startup(
         -- Telescope
         use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { 'nvim-lua/plenary.nvim' } }
         use 'nvim-telescope/telescope-project.nvim'
-        use 'nvim-telescope/telescope-file-browser.nvim'
 
         -- Zen Mode
         use 'folke/zen-mode.nvim'
@@ -70,6 +69,9 @@ return require('packer').startup(
                 { 'L3MON4D3/LuaSnip' },     -- Required
             }
         }
+
+        -- Git integration
+        use 'tpope/vim-fugitive'
 
         -- Bootstrapping
         if packer_bootstrap then
