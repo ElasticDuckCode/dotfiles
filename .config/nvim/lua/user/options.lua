@@ -1,5 +1,5 @@
 -- colors
-vim.wo.colorcolumn = '121'
+vim.wo.colorcolumn = '81'
 vim.o.background = 'dark'
 
 -- indentation
@@ -33,7 +33,14 @@ vim.opt.hidden = true
 
 -- scrolling
 vim.opt.scrolljump = -40
-vim.opt.scrolloff = 1
+vim.opt.scrolloff = 8
 
 -- statusline
 vim.opt.showmode = true
+
+-- search
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+-- update time
+vim.opt.updatetime = 50
