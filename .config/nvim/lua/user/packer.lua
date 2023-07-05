@@ -30,25 +30,15 @@ vim.cmd([[
 return require('packer').startup(
     function(use, vim)
         use 'wbthomason/packer.nvim'
-
-        -- Colorschmes
         use 'folke/tokyonight.nvim'
         use 'rose-pine/neovim'
-
-        -- Tmux Integration
         use 'christoomey/vim-tmux-navigator'
-
-        -- Telescope
+        use 'folke/zen-mode.nvim'
+        use 'mbbill/undotree'
+        use 'tpope/vim-fugitive'
+        use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { 'nvim-lua/plenary.nvim' } }
         use 'nvim-telescope/telescope-project.nvim'
-
-        -- Zen Mode
-        use 'folke/zen-mode.nvim'
-
-        -- Treesitter
-        use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-        -- LSP
         use {
             'VonHeikemen/lsp-zero.nvim',
             branch = 'v2.x',
@@ -69,9 +59,6 @@ return require('packer').startup(
                 { 'L3MON4D3/LuaSnip' },     -- Required
             }
         }
-
-        -- Git integration
-        use 'tpope/vim-fugitive'
 
         -- Bootstrapping
         if packer_bootstrap then
