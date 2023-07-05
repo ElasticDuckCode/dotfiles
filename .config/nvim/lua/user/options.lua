@@ -44,3 +44,7 @@ vim.opt.incsearch = true
 
 -- update time
 vim.opt.updatetime = 50
+
+-- netrw
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0

@@ -3,7 +3,7 @@ vim.keymap.set('n', '<Space>', '<Nop>', { noremap = true })
 vim.g.mapleader = ' '
 
 -- file explorer
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>pn', vim.cmd.Ex)
 
 -- disable arrow keys
 for _, key in ipairs({ '<Up>', '<Down>', '<Left>', '<Right>' }) do
@@ -27,3 +27,10 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- don't want
 vim.keymap.set("n", "Q", "<nop>")
+vim.api.nvim_create_user_command('W', 'w', {})
+vim.api.nvim_create_user_command('Q', 'q', {})
+vim.api.nvim_create_user_command('X', 'x', {})
+
+-- tmux sessionizer from primeagen
+vim.keymap.set("n", "<C-f>", "<Nop>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

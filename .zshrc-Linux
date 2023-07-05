@@ -7,6 +7,7 @@
 # add binary files to path
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.opt/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # edit terminal color settings
 export TERM=xterm-256color
@@ -33,10 +34,13 @@ if whence "nvim" > /dev/null; then
     export EDITOR="$VISUAL"
 fi
 
-
 # aliases
 alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+
+# tmux
+bindkey -s ^f "tmux-sessionizer\n"
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -56,7 +60,7 @@ if [ -f "/home/jake/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "/home/jake/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
-#
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
