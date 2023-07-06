@@ -18,6 +18,7 @@ cmp.setup({
     mapping = {
         -- `Enter` key to confirm completion
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<C-CR>'] = cmp.mapping.confirm({ select = false }),
 
         -- Navigate between snippet placeholder
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -54,7 +55,6 @@ vim.keymap.set('v', 'K', '', { noremap = true })
 
 
 -- floating window highlight
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
     vim.lsp.handlers.hover, {
         border = _border,

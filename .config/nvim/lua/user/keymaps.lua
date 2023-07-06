@@ -34,3 +34,7 @@ vim.api.nvim_create_user_command('X', 'x', {})
 -- tmux sessionizer from primeagen
 vim.keymap.set("n", "<C-f>", "<Nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- helpful to map ctrl-enter to enter
+vim.keymap.set("i", "<C-M>", "<CR>")
+vim.keymap.set("n", "<C-M>", "<CR>")
