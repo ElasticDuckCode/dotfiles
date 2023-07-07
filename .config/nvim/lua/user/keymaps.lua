@@ -14,8 +14,12 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- helpful to map ctrl-enter to enter
-vim.keymap.set("i", "<C-M>", "<CR>")
-vim.keymap.set("n", "<C-M>", "<CR>")
+vim.keymap.set("i", "<C-CR>", "<CR>")
+vim.keymap.set("n", "<C-CR>", "<CR>")
+
+-- move lines in visual mode
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 
 -- captial write/quit still work
 vim.api.nvim_create_user_command('W', 'w', {})
@@ -32,4 +36,3 @@ vim.keymap.set("n", "Q", "<nop>")
 -- tmux sessionizer from primeagen
 vim.keymap.set("n", "<C-f>", "<Nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
