@@ -11,6 +11,14 @@ vim.opt.swapfile = false --not once have I needed them, yet they annoy me always
 vim.opt.undodir = os.getenv("HOME") .. '/.local/share/nvim/undodir'
 vim.opt.undofile = true
 
+-- remember cursor position
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+    pattern = { "*" },
+    callback = function()
+        vim.api.nvim_exec('silent! normal! g`"zv', false)
+    end,
+})
+
 -- line wrapping
 vim.opt.wrap = true
 vim.opt.linebreak = true
