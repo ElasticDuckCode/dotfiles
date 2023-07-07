@@ -1,7 +1,3 @@
--- colors
-vim.wo.colorcolumn = '81'
-vim.o.background = 'dark'
-
 -- indentation
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
