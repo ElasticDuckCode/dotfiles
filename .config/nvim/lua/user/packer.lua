@@ -56,7 +56,9 @@ return require('packer').startup(
                 -- Autocompletion
                 { 'hrsh7th/nvim-cmp' },     -- Required
                 { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-                { 'L3MON4D3/LuaSnip' },     -- Required
+                { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+
+                { 'L3MON4D3/LuaSnip' }, -- Required
             }
         }
 
