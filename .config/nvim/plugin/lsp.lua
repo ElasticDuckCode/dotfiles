@@ -93,27 +93,22 @@ vim.diagnostic.config {
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require("mason-lspconfig").setup_handlers {
-    function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {
-            capabilities = capabilities,
-        }
-    end,
-    ["lua_ls"] = function()
-        require("lspconfig").lua_ls.setup {
-            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
-            capabilities = capabilities,
-        }
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local function on_attach(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format()
+            end,
+        })
     end
-}
+end
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            callback = function()
-                vim.lsp.buf.format()
-            end
-        })
         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
         local opts = { buffer = ev.buf }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -135,3 +130,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end, opts)
     end,
 })
+
+require("mason-lspconfig").setup_handlers {
+    function(server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+        }
+    end,
+    ["lua_ls"] = function()
+        require("lspconfig").lua_ls.setup {
+            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+            capabilities = capabilities,
+            on_attach = on_attach,
+        }
+    end
+}
