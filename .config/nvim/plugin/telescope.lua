@@ -1,12 +1,12 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 
-telescope.setup{
+telescope.setup {
     pickers = {
         buffers = {
             theme = "dropdown",
             previewer = false,
-        }
+        },
     }
 }
 

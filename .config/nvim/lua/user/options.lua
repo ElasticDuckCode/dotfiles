@@ -36,11 +36,12 @@ vim.opt.splitbelow = true
 vim.opt.hidden = true
 
 -- scrolling
-vim.opt.scrolljump = -40
+vim.opt.scrolljump = 0
 vim.opt.scrolloff = 8
 
 -- statusline
 vim.opt.showmode = true
+vim.opt.laststatus = 3
 
 -- search
 vim.opt.hlsearch = false

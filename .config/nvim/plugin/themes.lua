@@ -1,12 +1,27 @@
 vim.opt.termguicolors = true
-vim.wo.colorcolumn = '81'
 vim.o.background = 'dark'
-require("tokyonight").setup({ style = "night" })
+
+--require("tokyonight").setup({ style = "night", transparent = true })
+require('kanagawa').setup({
+    colors = {
+        theme = {
+            wave = { ui = { float = { bg = "none", }, }, },
+            all = { ui = { bg_gutter = "none" } }
+        }
+    },
+    transparent = true,
+    background = "dragon",
+})
 
 function apply_colors()
-    vim.cmd [[ colorscheme tokyonight ]]
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.cmd [[ colorscheme kanagawa ]]
+    vim.api.nvim_set_hl(0, "Pmenu", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "Pmenu" })
 end
 
 apply_colors()
+
+-- Instead of colorcolumn, just highlight when exceeding
+vim.wo.colorcolumn = '-1'
+--vim.cmd [[match OverLength /\%81v.*/]]
+vim.cmd [[match DiffDelete /\%81v./]]
