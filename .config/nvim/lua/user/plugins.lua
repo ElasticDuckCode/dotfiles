@@ -17,6 +17,7 @@ local plugins = {
     { "nvim-telescope/telescope.nvim",      branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
     { "folke/tokyonight.nvim",              lazy = false,     priority = 1000 },
     { "rebelot/kanagawa.nvim",              lazy = false,     priority = 1000 },
+    { "rose-pine/neovim",                   lazy = false,     priority = 1000 },
     { "nvim-treesitter/nvim-treesitter",    cmd = "TSUpdate" },
     { "tpope/vim-fugitive" },
     { "folke/zen-mode.nvim" },

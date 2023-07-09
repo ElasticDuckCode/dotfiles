@@ -1,5 +1,5 @@
 import:
-  - ~/.config/alacritty/kanagawa.yml.yml
+  - ~/.config/alacritty/rose-pine.yml
 
 
 window:
@@ -9,7 +9,8 @@ window:
   padding:
     x: 8
     y: 4
-  opacity: 0.98
+  opacity: 0.95
+  decorations: "None"
 
 
 font:
