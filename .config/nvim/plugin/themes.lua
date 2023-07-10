@@ -4,10 +4,10 @@ vim.o.background = 'dark'
 require("tokyonight").setup({ style = "night", transparent = true })
 require('kanagawa').setup({
     colors = { theme = { wave = { ui = { float = { bg = "none", }, }, }, all = { ui = { bg_gutter = "none" } } } },
-    transparent = true,
+    transparent = false,
     background = "dragon",
 })
-require("rose-pine").setup({ variant = "main", disable_background = true })
+require("rose-pine").setup({ variant = "main", disable_background = false })
 
 
 function apply_colors()

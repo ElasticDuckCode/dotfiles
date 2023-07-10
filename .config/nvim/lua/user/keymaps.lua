@@ -18,8 +18,8 @@ vim.keymap.set("i", "<C-CR>", "<CR>")
 vim.keymap.set("n", "<C-CR>", "<CR>")
 
 -- move lines in visual mode
-vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
 
 -- captial write/quit still work
 vim.api.nvim_create_user_command('W', 'w', {})
