@@ -3,15 +3,17 @@ vim.o.background = 'dark'
 
 require("tokyonight").setup({ style = "night", transparent = true })
 require('kanagawa').setup({
-    colors = { theme = { wave = { ui = { float = { bg = "none", }, }, }, all = { ui = { bg_gutter = "none" } } } },
+    colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
     transparent = false,
+    theme = "dragon",
     background = "dragon",
 })
 require("rose-pine").setup({ variant = "main", disable_background = false })
+require("gruvbox").setup({ overrides = { SignColumn = { bg = "none" } } })
 
 
 function apply_colors()
-    vim.cmd [[ colorscheme rose-pine ]]
+    vim.cmd [[ colorscheme kanagawa ]]
     vim.api.nvim_set_hl(0, "Pmenu", { link = "Normal" })
     vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "Pmenu" })
     vim.api.nvim_set_hl(0, "TelescopePromptNormal", { link = "Pmenu" })

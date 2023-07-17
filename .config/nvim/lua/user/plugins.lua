@@ -14,25 +14,38 @@ vim.opt.rtp:prepend(lazypath)
 
 -- declare plugins
 local plugins = {
+    --essentials
     { "nvim-telescope/telescope.nvim",      branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+    { "nvim-treesitter/nvim-treesitter",    cmd = "TSUpdate" },
+
+    -- extras
+    { "folke/zen-mode.nvim" },
+    { "christoomey/vim-tmux-navigator" },
+    { "ThePrimeagen/vim-be-good" },
+
+    --themes
     { "folke/tokyonight.nvim",              lazy = false,     priority = 1000 },
     { "rebelot/kanagawa.nvim",              lazy = false,     priority = 1000 },
     { "rose-pine/neovim",                   lazy = false,     priority = 1000 },
-    { "nvim-treesitter/nvim-treesitter",    cmd = "TSUpdate" },
+    { "ellisonleao/gruvbox.nvim",           lazy = false,     priority = 1000 },
+
+    --tpope
     { "tpope/vim-fugitive" },
-    { "folke/zen-mode.nvim" },
-    { "christoomey/vim-tmux-navigator" },
+    { "tpope/vim-commentary" },
+
+    --lsp+cmp
     { "neovim/nvim-lspconfig" },
     { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
+    --{ "williamboman/mason-lspconfig.nvim" },
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-path" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-cmdline" },
+    { "hrsh7th/cmp-nvim-lua" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
 }
 
 -- declare custom opts
