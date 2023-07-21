@@ -1,5 +1,5 @@
 require('mason').setup()
---require('mason-lspconfig').setup()
+require('mason-lspconfig').setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -54,13 +54,19 @@ require("lspconfig").pylsp.setup {
     settings = {
         pylsp = {
             plugins = {
-                --pycodestyle = { enabled = true, ignore = { "E203", "W503" }, maxLineLength = 88 },
-                --black = { enabled = false },
-                ruff = { enabled = true, extendSelect = { "I" }, },
+                --ruff = { enabled = false, extendSelect = { "I" }, },
+                pycodestyle = { enabled = true, ignore = { "E203", "W503" }, maxLineLength = 88 },
+                black = { enabled = true },
+                isort = { enabled = true },
                 mypy = { enabled = true },
             },
         },
     },
+}
+
+require("lspconfig").tsserver.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
 }
 
 
