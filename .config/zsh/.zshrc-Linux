@@ -36,7 +36,7 @@ alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 # tmux
-bindkey -s ^f "tmux-sessionizer\n"
+# bindkey -s ^f "tmux-sessionizer\n"
 
 
 # >>> conda initialize >>>
