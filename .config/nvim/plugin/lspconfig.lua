@@ -54,7 +54,6 @@ require("lspconfig").pylsp.setup {
     settings = {
         pylsp = {
             plugins = {
-                --ruff = { enabled = false, extendSelect = { "I" }, },
                 pycodestyle = { enabled = true, ignore = { "E203", "W503" }, maxLineLength = 88 },
                 black = { enabled = true },
                 isort = { enabled = true },
@@ -70,36 +69,18 @@ require("lspconfig").tsserver.setup {
 }
 
 
---require("mason-lspconfig").setup_handlers {
---    function(server_name) -- default handler (optional)
---        require("lspconfig")[server_name].setup {
---            capabilities = capabilities,
---            on_attach = on_attach,
---        }
---    end,
---    ["lua_ls"] = function()
---        require("lspconfig").lua_ls.setup {
---            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
---            capabilities = capabilities,
---            on_attach = on_attach,
---        }
---    end,
---    ["pylsp"] = function()
---        require("lspconfig").pylsp.setup {
---            settings = {
---                pylsp = {
---                    --PylspInstall...
---                    plugins = {
---                        pycodestyle = { enabled = false },
---                        yapf = { enabled = false },
---                        black = { enabled = true },
---                        ruff = { enabled = true, extendSelect = { "I" }, },
---                        mypy = { enabled = true },
---                    },
---                },
---            },
---            capabilities = capabilities,
---            on_attach = on_attach,
---        }
---    end,
---}
+require("mason-lspconfig").setup_handlers {
+    function(server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+        }
+    end,
+    ["lua_ls"] = function()
+        require("lspconfig").lua_ls.setup {
+            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+            capabilities = capabilities,
+            on_attach = on_attach,
+        }
+    end,
+}

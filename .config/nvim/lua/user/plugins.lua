@@ -15,7 +15,14 @@ vim.opt.rtp:prepend(lazypath)
 -- declare plugins
 local plugins = {
     --essentials
-    { "nvim-telescope/telescope.nvim",      branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+    {
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            'IllustratedMan-code/telescope-conda.nvim',
+        }
+    },
     { "nvim-treesitter/nvim-treesitter",    cmd = "TSUpdate" },
 
     -- extras
@@ -24,10 +31,10 @@ local plugins = {
     { "ThePrimeagen/vim-be-good" },
 
     --themes
-    { "folke/tokyonight.nvim",              lazy = false,     priority = 1000 },
-    { "rebelot/kanagawa.nvim",              lazy = false,     priority = 1000 },
-    { "rose-pine/neovim",                   lazy = false,     priority = 1000 },
-    { "ellisonleao/gruvbox.nvim",           lazy = false,     priority = 1000 },
+    { "folke/tokyonight.nvim",              lazy = false,    priority = 1000 },
+    { "rebelot/kanagawa.nvim",              lazy = false,    priority = 1000 },
+    { "rose-pine/neovim",                   lazy = false,    priority = 1000 },
+    { "ellisonleao/gruvbox.nvim",           lazy = false,    priority = 1000 },
 
     --tpope
     { "tpope/vim-fugitive" },
