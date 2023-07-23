@@ -29,6 +29,9 @@ local plugins = {
     { "folke/zen-mode.nvim" },
     { "christoomey/vim-tmux-navigator" },
     { "ThePrimeagen/vim-be-good" },
+    { "nvim-tree/nvim-web-devicons" },
+
+
 
     --themes
     { "folke/tokyonight.nvim",              lazy = false,    priority = 1000 },
@@ -54,6 +57,14 @@ local plugins = {
     { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
+
+    --debugging
+    { "mfussenegger/nvim-dap" },
+    { "rcarriga/nvim-dap-ui" },
+    { "theHamsta/nvim-dap-virtual-text" },
+    { "nvim-telescope/telescope-dap.nvim" },
+    { "mfussenegger/nvim-dap-python" },
+
 }
 
 -- declare custom opts
