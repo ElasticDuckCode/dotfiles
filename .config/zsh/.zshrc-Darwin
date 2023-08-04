@@ -10,6 +10,7 @@ export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export CPATH="/opt/homebrew/include:$CPATH"
 export LIBRARY_PATH="/opt/homebrew/lib:$LIBRARY_PATH"
+export HOMEBREW_NO_ANALYTICS=1
 
 # edit terminal color settings
 export CLICOLOR=1
