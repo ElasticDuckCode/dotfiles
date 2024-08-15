@@ -31,8 +31,6 @@ local plugins = {
     { "ThePrimeagen/vim-be-good" },
     { "nvim-tree/nvim-web-devicons" },
 
-
-
     --themes
     { "folke/tokyonight.nvim",              lazy = false,    priority = 1000 },
     { "rebelot/kanagawa.nvim",              lazy = false,    priority = 1000 },
@@ -64,6 +62,12 @@ local plugins = {
     { "theHamsta/nvim-dap-virtual-text" },
     { "nvim-telescope/telescope-dap.nvim" },
     { "mfussenegger/nvim-dap-python" },
+
+    --latex
+    { "lervag/vimtex" },
+
+    --lisp
+    { "vlime/vlime" },
 
 }
 
