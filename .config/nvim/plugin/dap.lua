@@ -18,10 +18,10 @@ vim.keymap.set(
     "<leader>dr",
     ":lua require'dap'.repl.open()<CR>"
 )
+vim.keymap.set("n", "<F6>", ":lua require('dap.ext.vscode').load_launchjs()<CR>")
 
 local dap = require("dap")
 local dapui = require("dapui")
-local dappy = require("dap-python")
 
 dapui.setup()
 
@@ -35,4 +35,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
 end
 
-dappy.setup('~/mambaforge/envs/debugpy/bin/python')
+require("dap-python").setup('~/.mambaforge/envs/debugpy/bin/python')
+require("nvim-dap-virtual-text").setup()
+require('dap.ext.vscode').load_launchjs() --auto read launch.json

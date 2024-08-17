@@ -41,20 +41,20 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/jake/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/jake/.mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/jake/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/jake/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/home/jake/.mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/jake/.mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/jake/mambaforge/bin:$PATH"
+        export PATH="/home/jake/.mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/home/jake/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/jake/mambaforge/etc/profile.d/mamba.sh"
+if [ -f "/home/jake/.mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/jake/.mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 

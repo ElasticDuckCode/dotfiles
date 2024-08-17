@@ -10,7 +10,7 @@ telescope.setup {
         },
     },
     extensions = {
-        conda = { anaconda_path = vim.fn.expand('$HOME/mambaforge/') }
+        conda = { anaconda_path = vim.fn.expand('$HOME/.mambaforge/') }
     }
 }
 

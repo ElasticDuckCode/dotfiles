@@ -1,8 +1,8 @@
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-local _border = "rounded"
+local _border = "single"
 local _highlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None"
+
 
 cmp.setup({
     print("loading sources"),
@@ -13,10 +13,11 @@ cmp.setup({
     },
     sources = {
         { name = 'path' },
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
+        { name = 'nvim_lsp',               keyword_length = 1 },
         { name = 'luasnip',                keyword_length = 2 },
         { name = 'buffer',                 keyword_length = 2 },
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'conjure' },
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
