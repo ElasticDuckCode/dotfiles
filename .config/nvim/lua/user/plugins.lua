@@ -68,6 +68,7 @@ local plugins = {
 
     --lisp
     { "vlime/vlime" },
+    { "Olical/conjure" },
 
 }
 
