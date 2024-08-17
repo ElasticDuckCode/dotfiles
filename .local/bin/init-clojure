@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+mkdir src
+echo "{}" >> deps.edn
