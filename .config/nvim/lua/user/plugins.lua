@@ -53,7 +53,7 @@ local plugins = {
     { "hrsh7th/cmp-nvim-lua" },
     { "hrsh7th/cmp-nvim-lsp" },
     { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-    { "L3MON4D3/LuaSnip" },
+    { "L3MON4D3/LuaSnip",                   tag = "v2.3.0",  run = "make install_jsregexp" },
     { "saadparwaiz1/cmp_luasnip" },
 
     --debugging
@@ -67,9 +67,21 @@ local plugins = {
     { "lervag/vimtex" },
 
     --lisp
-    { "vlime/vlime" },
+    --{ "vlime/vlime" },
     { "Olical/conjure" },
 
+}
+
+--conjure should only run on these filetypes
+vim.g["conjure#filetypes"] = {
+    "clojure",
+    "fennel",
+    "janet",
+    "hy",
+    "racket",
+    "scheme",
+    "lisp",
+    "sql"
 }
 
 -- declare custom opts
