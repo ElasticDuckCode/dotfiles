@@ -51,14 +51,23 @@ mkdir $dir/$videos
 # Remove home directory user folders with rmdir (which should fail if folder is
 # non-empty to prevent accidental data loss). Then symboliclly link the new
 # external drive directories
-rmdir $XDG_DESKTOP_DIR && ln -s $dir/$desktop $XDG_DESKTOP_DIR
-rmdir $XDG_DOWNLOAD_DIR && ln -s $dir/$downloads $XDG_DOWNLOAD_DIR
-rmdir $XDG_TEMPLATES_DIR && ln -s $dir/$templates $XDG_TEMPLATES_DIR
-rmdir $XDG_PUBLICSHARE_DIR && ln -s $dir/$share $XDG_PUBLICSHARE_DIR
-rmdir $XDG_DOCUMENTS_DIR && ln -s $dir/$documents $XDG_DOCUMENTS_DIR
-rmdir $XDG_MUSIC_DIR && ln -s $dir/$music $XDG_MUSIC_DIR
-rmdir $XDG_PICTURES_DIR && ln -s $dir/$pictures $XDG_PICTURES_DIR
-rmdir $XDG_VIDEOS_DIR && ln -s $dir/$videos $XDG_VIDEOS_DIR
+rmdir $XDG_DESKTOP_DIR
+rmdir $XDG_DOWNLOAD_DIR
+rmdir $XDG_TEMPLATES_DIR
+rmdir $XDG_PUBLICSHARE_DIR
+rmdir $XDG_DOCUMENTS_DIR 
+rmdir $XDG_MUSIC_DIR
+rmdir $XDG_PICTURES_DIR
+rmdir $XDG_VIDEOS_DIR
+
+ln -s $dir/$desktop $XDG_DESKTOP_DIR
+ln -s $dir/$downloads $XDG_DOWNLOAD_DIR
+ln -s $dir/$templates $XDG_TEMPLATES_DIR
+ln -s $dir/$share $XDG_PUBLICSHARE_DIR
+ln -s $dir/$documents $XDG_DOCUMENTS_DIR
+ln -s $dir/$music $XDG_MUSIC_DIR
+ln -s $dir/$pictures $XDG_PICTURES_DIR
+ln -s $dir/$videos $XDG_VIDEOS_DIR
 
 
 
