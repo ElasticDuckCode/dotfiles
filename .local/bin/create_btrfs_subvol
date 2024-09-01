@@ -29,6 +29,7 @@ done
 
 # Mount btrfs partition and create required subvolumes
 mount "$2" /mnt
+pushd /mnt
 btrfs subvolume create @ @root @home @log @tmp @opt
 
 # Mount btrfs subvolumes for installing or chroot-ing.
@@ -41,3 +42,4 @@ mount -o noatime,compress=zstd,subvol=@log  "$2" /target/var/log
 mount -o noatime,compress=zstd,subvol=@tmp  "$2" /target/tmp
 mount -o noatime,compress=zstd,subvol=@opt  "$2" /target/opt
 mount "$1" /target/boot/efi
+popd
