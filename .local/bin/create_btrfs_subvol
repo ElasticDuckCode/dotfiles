@@ -1,0 +1,37 @@
+#!/bin/sh
+
+#
+# btrfs_subvolumes.sh
+# 
+# Jake Millhiser
+# 2024/08/31
+#
+# Creates a timeshift-compatable btrfs subvolume layout
+# for a disk formated as follows:
+# 1) An EFI parition to be mounted at /target/boot/efi
+# 2) A btrfs parition to be mounted at /target
+#
+# This allows for streamlined btrfs formatting in
+# linux installs.
+
+echo EFI boot parition  : "$1"
+echo btrfs root parition: "$2"
+
+echo "Create btrfs subvolumes on $2 ?"
+select yn in "Yes" "No"; do
+case $yn in
+    Yes ) break;;
+    No ) exit;;
+esac
+done
+
+btrfs subvolume create @ @root @home @log @tmp @opt
+mkdir -pv /target
+mount -ov noatime,compress=zstd,subvol=@ "$2" /target
+mkdir -pv /target/{boot/efi,root,home,var/log,tmp,opt}
+mount -ov noatime,compress=zstd,subvol=@home "$2" /target/home
+mount -ov noatime,compress=zstd,subvol=@root "$2" /target/root
+mount -ov noatime,compress=zstd,subvol=@log  "$2" /target/var/log
+mount -ov noatime,compress=zstd,subvol=@tmp  "$2" /target/tmp
+mount -ov noatime,compress=zstd,subvol=@opt  "$2" /target/opt
+mount "$1" /target/boot/efi
