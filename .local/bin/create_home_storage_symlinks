@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+#
+# create_home_storage_symlinks
+#
+# Written by Jake Millhiser
+# 2024/08/27
+#
+# A simple utility script to symboliclly link XDG user directories
+# to an external drive for storage.
+#
+# Typically I don't want my whole home directory on a seperate drive.
+# Instead I prefer to symlink the more persistent user directories
+# to an seperate drive, which can more easily be mounted to new
+# linux installations.
+#
+# usage:
+# > ./create_home_storage_symlinks <mount_dir>
+#
+# where mount_dir is the location where the external drive 
+# is mounted, like /mnt/Linux_Storage
+#
+
+# First arguement is the mount point of the external drive
+dir=$1
+
+# Source the XDG directories that are specified
+source $HOME/.config/user-dirs.dirs
+   
+# Grab the names of folders to create on external drive
+desktop=$(basename $XDG_DESKTOP_DIR)
+downloads=$(basename $XDG_DOWNLOAD_DIR)
+templates=$(basename $XDG_TEMPLATES_DIR)
+share=$(basename $XDG_PUBLICSHARE_DIR)
+documents=$(basename $XDG_DOCUMENTS_DIR)
+music=$(basename $XDG_MUSIC_DIR)
+pictures=$(basename $XDG_PICTURES_DIR)
+videos=$(basename $XDG_VIDEOS_DIR)
+
+# Create folders on the external drive
+echo Creating XDG folders on drive mounted at: $dir
+mkdir $dir/$desktop
+mkdir $dir/$downloads
+mkdir $dir/$templates
+mkdir $dir/$share
+mkdir $dir/$documents
+mkdir $dir/$music
+mkdir $dir/$pictures
+mkdir $dir/$videos
+
+# Remove home directory user folders with rmdir (which should fail if folder is
+# non-empty to prevent accidental data loss). Then symboliclly link the new
+# external drive directories
+rmdir $XDG_DESKTOP_DIR
+rmdir $XDG_DOWNLOAD_DIR
+rmdir $XDG_TEMPLATES_DIR
+rmdir $XDG_PUBLICSHARE_DIR
+rmdir $XDG_DOCUMENTS_DIR 
+rmdir $XDG_MUSIC_DIR
+rmdir $XDG_PICTURES_DIR
+rmdir $XDG_VIDEOS_DIR
+
+ln -s $dir/$desktop $XDG_DESKTOP_DIR
+ln -s $dir/$downloads $XDG_DOWNLOAD_DIR
+ln -s $dir/$templates $XDG_TEMPLATES_DIR
+ln -s $dir/$share $XDG_PUBLICSHARE_DIR
+ln -s $dir/$documents $XDG_DOCUMENTS_DIR
+ln -s $dir/$music $XDG_MUSIC_DIR
+ln -s $dir/$pictures $XDG_PICTURES_DIR
+ln -s $dir/$videos $XDG_VIDEOS_DIR
+
+
+

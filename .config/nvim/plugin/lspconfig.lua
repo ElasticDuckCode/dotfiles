@@ -67,7 +67,7 @@ require("lspconfig").pylsp.setup {
     settings = {
         pylsp = {
             plugins = {
-                pycodestyle = { enabled = true, ignore = { "E203", "W503" }, maxLineLength = 88 },
+                pycodestyle = { enabled = true, ignore = { "E203", "W503" }, maxLineLength = 121 },
                 black = { enabled = true },
                 isort = { enabled = true },
                 mypy = { enabled = true },
