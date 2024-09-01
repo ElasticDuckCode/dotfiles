@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# btrfs_subvolumes.sh
+# create_btrfs_subvol
 # 
 # Jake Millhiser
 # 2024/08/31
@@ -17,6 +17,8 @@
 echo EFI boot parition  : "$1"
 echo btrfs root parition: "$2"
 
+echo "This script assumes nothing is mounted on /mnt currently"
+
 echo "Create btrfs subvolumes on $2 ?"
 select yn in "Yes" "No"; do
 case $yn in
@@ -25,7 +27,11 @@ case $yn in
 esac
 done
 
+# Mount btrfs partition and create required subvolumes
+mount "$2" /mnt
 btrfs subvolume create @ @root @home @log @tmp @opt
+
+# Mount btrfs subvolumes for installing or chroot-ing.
 mkdir -pv /target
 mount -ov noatime,compress=zstd,subvol=@ "$2" /target
 mkdir -pv /target/{boot/efi,root,home,var/log,tmp,opt}
