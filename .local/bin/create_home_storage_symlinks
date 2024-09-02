@@ -28,6 +28,7 @@ dir=$1
 source $HOME/.config/user-dirs.dirs
    
 # Grab the names of folders to create on external drive
+applications="Applications"
 desktop=$(basename $XDG_DESKTOP_DIR)
 downloads=$(basename $XDG_DOWNLOAD_DIR)
 templates=$(basename $XDG_TEMPLATES_DIR)
@@ -39,18 +40,20 @@ videos=$(basename $XDG_VIDEOS_DIR)
 
 # Create folders on the external drive
 echo Creating XDG folders on drive mounted at: $dir
-mkdir $dir/$desktop
-mkdir $dir/$downloads
-mkdir $dir/$templates
-mkdir $dir/$share
-mkdir $dir/$documents
-mkdir $dir/$music
-mkdir $dir/$pictures
-mkdir $dir/$videos
+mkdir -v $dir/$applications
+mkdir -v $dir/$desktop
+mkdir -v $dir/$downloads
+mkdir -v $dir/$templates
+mkdir -v $dir/$share
+mkdir -v $dir/$documents
+mkdir -v $dir/$music
+mkdir -v $dir/$pictures
+mkdir -v $dir/$videos
 
 # Remove home directory user folders with rmdir (which should fail if folder is
 # non-empty to prevent accidental data loss). Then symboliclly link the new
 # external drive directories
+rmdir $HOME/$applications
 rmdir $XDG_DESKTOP_DIR
 rmdir $XDG_DOWNLOAD_DIR
 rmdir $XDG_TEMPLATES_DIR
@@ -60,6 +63,7 @@ rmdir $XDG_MUSIC_DIR
 rmdir $XDG_PICTURES_DIR
 rmdir $XDG_VIDEOS_DIR
 
+ln -s $dir/$applications $HOME/$applications
 ln -s $dir/$desktop $XDG_DESKTOP_DIR
 ln -s $dir/$downloads $XDG_DOWNLOAD_DIR
 ln -s $dir/$templates $XDG_TEMPLATES_DIR
