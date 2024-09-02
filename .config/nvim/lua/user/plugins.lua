@@ -64,7 +64,7 @@ local plugins = {
     { "mfussenegger/nvim-dap-python" },
 
     --latex
-    { "lervag/vimtex" },
+    -- { "lervag/vimtex" },
 
     --lisp
     --{ "vlime/vlime" },
