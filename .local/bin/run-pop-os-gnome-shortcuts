@@ -117,3 +117,9 @@ fi
 
 # Workspaces spanning displays works better with Pop Shell
 dconf write /org/gnome/mutter/workspaces-only-on-primary false
+
+# Also un-bind super+number for space-bar usage
+for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-application-$i "[]";done
+
+# Also for me, disable animations for faster workspace switching
+gsettings set org.gnome.desktop.interface enable-animations false
