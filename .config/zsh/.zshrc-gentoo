@@ -1,0 +1,63 @@
+#
+# ~/.zshrc-gentoo
+#
+# Configure zshrc specific to Gentoo Linux
+#
+
+# add binary files to path
+export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.opt/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# custom prompt
+PROMPT='%F{yellow}%n@%F{red}%m%f:%F{cyan}%(4~|.../%3~|%~)%f%# '
+
+# zsh tab completion
+autoload -Uz compinit promptinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+promptinit
+
+# home,end,delete
+bindkey  "^[[1~"   beginning-of-line
+bindkey  "^[[4~"   end-of-line
+bindkey  "^[[3~"  delete-char
+ 
+# zsh history
+HISTFILE=~/.config/zsh/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory
+
+# zsh syntax highlighting and autosuggestions
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/share/zsh/site-functions/highlighters
+source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^[[Z' autosuggest-accept
+
+# use neovim instead of vim
+if whence "nvim" > /dev/null; then
+	alias vim="nvim"
+    export VISUAL=nvim
+    export EDITOR="$VISUAL"
+fi
+
+# aliases
+alias ls="ls -1 --color=auto"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+
+# tmux
+# bindkey -s ^f "tmux-sessionizer\n"
+
+# when running debian, must sudo poweroff commands
+if ! whence "poweroff" > /dev/null; then
+    alias poweroff="sudo poweroff"
+fi
+if ! whence "reboot" > /dev/null; then
+    alias reboot="sudo reboot"
+fi
+
+if ! whence "halt" > /dev/null; then
+    alias halt="sudo halt"
+fi
