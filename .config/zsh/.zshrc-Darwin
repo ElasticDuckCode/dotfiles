@@ -48,6 +48,7 @@ alias conda_x86=/Users/jake/mambaforge/x86/bin/conda
 alias ucsdvpn="sudo openconnect --user=jmillhis vpn.ucsd.edu"
 #alias ls="ls -1 --color=auto | sort -n"
 alias ls="ls -1 --color=auto"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -68,4 +69,3 @@ if [ -f "/Users/jake/mambaforge/arm64/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"

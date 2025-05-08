@@ -24,6 +24,10 @@ zmodload zsh/complist
 compinit
 promptinit
  
+# vi mode
+bindkey -v
+KEYTIMEOUT=5
+
 # zsh history
 HISTFILE=~/.config/zsh/.zsh_history
 HISTSIZE=1000
@@ -41,40 +45,7 @@ fi
 alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
-# tmux
-# bindkey -s ^f "tmux-sessionizer\n"
-
-# when running debian, must sudo poweroff commands
-if ! whence "poweroff" > /dev/null; then
-    alias poweroff="sudo poweroff"
-fi
-if ! whence "reboot" > /dev/null; then
-    alias reboot="sudo reboot"
-fi
-
-if ! whence "halt" > /dev/null; then
-    alias halt="sudo halt"
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/jake/.miniforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/jake/.miniforge/etc/profile.d/conda.sh" ]; then
-        . "/home/jake/.miniforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/jake/.miniforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/home/jake/.miniforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/jake/.miniforge/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
+# bind home, end, delete
+bindkey  "^[[1~"  beginning-of-line
+bindkey  "^[[4~"  end-of-line
+bindkey  "^[[3~"  delete-char
