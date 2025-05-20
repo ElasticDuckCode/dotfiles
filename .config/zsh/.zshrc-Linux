@@ -41,6 +41,12 @@ if whence "nvim" > /dev/null; then
     export EDITOR="$VISUAL"
 fi
 
+# use fastfetch instead of neofetch
+if whence "fastfetch" > /dev/null; then
+	alias neofetch="fastfetch"
+fi
+
+
 # aliases
 alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
