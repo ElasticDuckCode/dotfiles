@@ -10,7 +10,7 @@ export PATH="$HOME/.opt/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # custom prompt
-PROMPT='%F{yellow}%n@%F{red}%m%f:%F{cyan}%(4~|.../%3~|%~)%f%# '
+PROMPT='%F{yellow}%n@%F{red}%m%f:%F{cyan}%(4~|.../%1~|%~)%f%# '
 
 # zsh syntax highlighting and autosuggestions
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/share/zsh-syntax-highlighting/highlighters
@@ -49,7 +49,7 @@ fi
 
 # aliases
 alias ls="ls -1 --color=auto"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # bind home, end, delete
 bindkey  "^[[1~"  beginning-of-line
