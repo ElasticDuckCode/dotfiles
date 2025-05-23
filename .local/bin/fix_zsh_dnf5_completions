@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+#
+# Script to wget working zsh autocompletion files for dnf (Fedora package
+# manager).
+#
+# Jake Millhiser
+# 05/22/2025
+#
+
+# Specify locations of zsh functions (below were locations in Fedora 42)
+DNF_FILE=/usr/share/zsh/5.9/functions/_dnf
+DNF5_FILE=/usr/share/zsh/5.9/functions/_dnf5
+
+# Backup files if they already exist
+if [ -e "$DNF_FILE" ]; then
+    sudo cp $DNF_FILE $DNF_FILE.disable
+fi
+if [ -e "$DN5_FILE" ]; then
+    sudo cp $DNF5_FILE $DNF5_FILE.disable
+fi
+
+# Fetch working files using wget command.
+sudo wget https://raw.githubusercontent.com/zsh-users/zsh/master/Completion/Redhat/Command/_dnf -O $DNF_FILE
+sudo wget https://raw.githubusercontent.com/zsh-users/zsh/master/Completion/Redhat/Command/_dnf5 -O $DNF5_FILE
