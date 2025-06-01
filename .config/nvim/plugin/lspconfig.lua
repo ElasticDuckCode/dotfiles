@@ -81,18 +81,18 @@ require("lspconfig").clangd.setup {
     on_attach = on_attach,
 }
 
-require("mason-lspconfig").setup_handlers {
-    function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-        }
-    end,
-    ["lua_ls"] = function()
-        require("lspconfig").lua_ls.setup {
-            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
-            capabilities = capabilities,
-            on_attach = on_attach,
-        }
-    end,
-}
+--require("mason-lspconfig").setup_handlers {
+--    function(server_name) -- default handler (optional)
+--        require("lspconfig")[server_name].setup {
+--            capabilities = capabilities,
+--            on_attach = on_attach,
+--        }
+--    end,
+--    ["lua_ls"] = function()
+--        require("lspconfig").lua_ls.setup {
+--            settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+--            capabilities = capabilities,
+--            on_attach = on_attach,
+--        }
+--    end,
+--}
