@@ -46,7 +46,6 @@ if whence "fastfetch" > /dev/null; then
 	alias neofetch="fastfetch"
 fi
 
-
 # aliases
 alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
