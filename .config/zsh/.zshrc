@@ -7,3 +7,4 @@ else
     distro=$(uname)
 fi
 source "${ZDOTDIR:-${HOME}}/.zshrc-$distro"
+

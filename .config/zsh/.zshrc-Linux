@@ -54,3 +54,5 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 bindkey  "^[[1~"  beginning-of-line
 bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
+
+source ~/.config/zsh/conda_init
