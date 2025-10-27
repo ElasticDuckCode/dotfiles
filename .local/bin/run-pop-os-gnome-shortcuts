@@ -125,3 +125,6 @@ for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-applicat
 # Also for me, disable animations for faster workspace switching
 gsettings set org.gnome.desktop.interface enable-animations false
 
+# Also lets change overview button (search) to be like MacOS, so I don't accentally open overlay.
+gsettings set org.gnome.mutter overlay-key ''  
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>space']"
