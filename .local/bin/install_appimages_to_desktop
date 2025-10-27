@@ -1,34 +1,17 @@
 #!/usr/bin/env sh
 
 DIR="/home/jake/Applications"
-FILES="$DIR/*"
+FILES="$DIR/*.AppImage"
 
 pushd $DIR
 
+echo $FILES
+
 for f in $FILES
 do
+
     echo "Installing AppImage: $f"
-
-    # Unpack the appimage file, which should contain its own desktop file.
-    $f --appimage-extract > /dev/null 2>&1
-
-    # Replace lines within appimage to point to correct files
-    DESKTOP=$DIR/squashfs-root/*.desktop
-    sed -i "s#Exec=.*#Exec=${f}#" $DESKTOP
-
-    # Make executable and move to ~/.local/share/applications/
-    chmod +x $DESKTOP
-    mkdir -p ~/.local/share/applications
-    cp -L $DESKTOP ~/.local/share/applications
-
-    # Copy over the icon
-    ICON=$DIR/squashfs-root/*.png
-    mkdir -p ~/.local/share/icons
-    cp -L $ICON ~/.local/share/icons
-
-    # Cleanup
-    rm -rf $DIR/squashfs-root
+    install_appimage $f
 
 done
-
 popd
