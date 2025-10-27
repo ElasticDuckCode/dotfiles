@@ -18,7 +18,7 @@
 # > ./create_home_storage_symlinks <mount_dir>
 #
 # where mount_dir is the location where the external drive 
-# is mounted, like /mnt/Linux_Storage
+# is mounted, like /mnt/Linux_Storage/User_Directories
 #
 
 # First arguement is the mount point of the external drive
@@ -29,6 +29,7 @@ source $HOME/.config/user-dirs.dirs
    
 # Grab the names of folders to create on external drive
 applications="Applications"
+games="Games"
 desktop=$(basename $XDG_DESKTOP_DIR)
 downloads=$(basename $XDG_DOWNLOAD_DIR)
 templates=$(basename $XDG_TEMPLATES_DIR)
@@ -41,6 +42,7 @@ videos=$(basename $XDG_VIDEOS_DIR)
 # Create folders on the external drive
 echo Creating XDG folders on drive mounted at: $dir
 mkdir -v $dir/$applications
+mkdir -v $dir/$games
 mkdir -v $dir/$desktop
 mkdir -v $dir/$downloads
 mkdir -v $dir/$templates
@@ -54,6 +56,7 @@ mkdir -v $dir/$videos
 # non-empty to prevent accidental data loss). Then symboliclly link the new
 # external drive directories
 rmdir $HOME/$applications
+rmdir $HOME/$games
 rmdir $XDG_DESKTOP_DIR
 rmdir $XDG_DOWNLOAD_DIR
 rmdir $XDG_TEMPLATES_DIR
@@ -64,6 +67,7 @@ rmdir $XDG_PICTURES_DIR
 rmdir $XDG_VIDEOS_DIR
 
 ln -s $dir/$applications $HOME/$applications
+ln -s $dir/$games $HOME/$games
 ln -s $dir/$desktop $XDG_DESKTOP_DIR
 ln -s $dir/$downloads $XDG_DOWNLOAD_DIR
 ln -s $dir/$templates $XDG_TEMPLATES_DIR
