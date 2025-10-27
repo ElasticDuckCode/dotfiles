@@ -49,10 +49,12 @@ fi
 # aliases
 alias ls="ls -1 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias help="man"
 
 # bind home, end, delete
 bindkey  "^[[1~"  beginning-of-line
 bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
 
+# initialization for conda
 source ~/.config/zsh/conda_init
