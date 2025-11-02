@@ -69,3 +69,8 @@ if [ -f "/Users/jake/mambaforge/arm64/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+<<<<<<< HEAD
+=======
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+>>>>>>> edc0ae3 (nvim config reset.)
