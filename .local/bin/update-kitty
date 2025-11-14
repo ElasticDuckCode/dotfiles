@@ -1,15 +1,21 @@
 #!/usr/bin/env sh
 
-KITTY_PATH=$HOME/.local/kitty.app
+KITTY_ROOT=$HOME/.opt
+KITTY_PATH=$KITTY_ROOT/kitty.app
+KITTY_DEST=$HOME/.opt/bin
 
+# Backup kitty
 if [ -d "$KITTY_PATH" ];
 then
-    cp $HOME/.local/kitty.app $HOME/.local/kitty.app.old
+    mv $KITTY_PATH "${KITTY_PATH}.old"
 fi
 
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
-cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
-cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+# Download kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=$KITTY_ROOT
+ln -sf $KITTY_PATH/bin/kitty $KITTY_PATH/bin/kitten $KITTY_DEST
+
+# Integrate kitty to desktop
+cp $KITTY_PATH/share/applications/kitty.desktop ~/.local/share/applications/
+cp $KITTY_PATH/share/applications/kitty-open.desktop ~/.local/share/applications/
 sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
 sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop

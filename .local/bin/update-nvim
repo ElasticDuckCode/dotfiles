@@ -1,12 +1,14 @@
 #!/usr/bin/env sh
 
-FILE=$HOME/.opt/bin/nvim
+DIR=$HOME/.opt/bin
+FILE=$DIR/nvim
+
 if [ -f "$FILE" ];
 then
-    cp $HOME/.opt/bin/nvim $HOME/.opt/bin/nvim.backup
+    cp $FILE "${FILE}.old"
 fi
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
 chmod +x nvim-linux-x86_64.appimage
-mkdir -p $HOME/.opt/bin
-mv nvim-linux-x86_64.appimage $HOME/.opt/bin/nvim
+mkdir -p $DIR
+mv nvim-linux-x86_64.appimage $FILE
