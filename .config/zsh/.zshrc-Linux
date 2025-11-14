@@ -9,9 +9,6 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.opt/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# custom prompt
-PROMPT='%F{yellow}%n@%F{red}%m%f:%F{cyan}%(4~|.../%1~|%~)%f%# '
-
 # zsh syntax highlighting and autosuggestions
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/share/zsh-syntax-highlighting/highlighters
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -23,7 +20,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 promptinit
- 
+
 # vi mode
 bindkey -v
 KEYTIMEOUT=5
@@ -34,9 +31,21 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory
 
+# git
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '(%b)'
+
+# custom prompt
+setopt prompt_subst
+local NEWLINE=$'\n'
+local TERM_STRING='%(!.#.>)'
+PROMPT='%F{yellow}%n@%F{red}%m%f:%F{cyan}%(4~|.../%1~|%~)%f %F{green}${vcs_info_msg_0_}%f% ${NEWLINE}${TERM_STRING} '
+RPROMPT="%D{%F %T}"
+
 # use neovim instead of vim
 if whence "nvim" > /dev/null; then
-	alias vim="nvim"
+    alias vim="nvim"
     export VISUAL=nvim
     export EDITOR="$VISUAL"
 fi
@@ -47,9 +56,10 @@ if whence "fastfetch" > /dev/null; then
 fi
 
 # aliases
-alias ls="ls -1 --color=auto"
+alias ls="ls --width=80 --color=auto"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias help="man"
+alias open="gio open"
 
 # bind home, end, delete
 bindkey  "^[[1~"  beginning-of-line
