@@ -5,9 +5,9 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.opt/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-export BREW_PATH="/opt/homebrew"
-export BREW_BIN="$BREW_PATH/bin/brew"
-if whence $BREW_BIN > /dev/null ; then
+if [[ $(uname) == "Darwin" ]]; then
+    export BREW_PATH="/opt/homebrew"
+    export BREW_BIN="$BREW_PATH/bin/brew"
     #eval $($BREW_BIN shellenv)
 
     # brew paths
