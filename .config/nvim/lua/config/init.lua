@@ -1,10 +1,12 @@
---user leader key (before plugins)
+--user leader key (before lazy)
 require("config.leader")
 
---setup plugins
+--setup plugin manager
 require("config.lazy")
-require("config.plugins")
 
 --user configuration
 require("config.options")
 require("config.keymaps")
+
+--theme configuration
+require("config.themes")

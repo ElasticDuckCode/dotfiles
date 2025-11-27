@@ -15,7 +15,7 @@ vim.opt.undofile = true
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     pattern = { "*" },
     callback = function()
-        vim.api.nvim_exec('silent! normal! g`"zv', false)
+        vim.api.nvim_exec2('silent! normal! g`"zv', { output = true })
     end,
 })
 
@@ -60,3 +60,22 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+        },
+        numhl = {
+            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+        },
+    },
+    virtual_text = { current_line = true },
+    virtual_lines = false
+})
