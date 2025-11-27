@@ -1,10 +1,12 @@
-if [[ $(uname) == "Linux" ]] then
-    distro="$(cat /etc/*-release | grep ^ID= | sed 's/ID=//g')"
-    if [[ $distro != "gentoo" ]] then
-        distro=$(uname)
-    fi
-else
-    distro=$(uname)
-fi
-source "${ZDOTDIR:-${HOME}}/.zshrc-$distro"
+#
+# .zshrc
+#
+# Configure zshrc
+#
 
+source "$ZDOTDIR/path.zsh"
+source "$ZDOTDIR/highlighting.zsh"
+source "$ZDOTDIR/general.zsh"
+source "$ZDOTDIR/prompt.zsh"
+source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/conda_init.zsh"

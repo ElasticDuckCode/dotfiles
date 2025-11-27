@@ -19,9 +19,10 @@ for bin in "gcc" "as" "ld"; do
     fi
 done
 
-alias ls="ls -1 --color=auto --group-directories-first"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias ls="ls -1 --color=auto"
+alias ucsdvpn="sudo openconnect --user=jmillhis vpn.ucsd.edu"
 alias help="man"
 alias open="gio open"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 

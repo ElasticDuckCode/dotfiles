@@ -21,3 +21,6 @@ setopt appendhistory
 bindkey  "^[[1~"  beginning-of-line
 bindkey  "^[[4~"  end-of-line
 bindkey  "^[[3~"  delete-char
+
+# if I ever install dotnew again
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
