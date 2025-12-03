@@ -15,7 +15,7 @@ fi
 # Arm Architecture compiler, assembler, and linker
 for bin in "gcc" "as" "ld"; do
     if whence "aarch64-linux-gnu-$bin" > /dev/null; then
-        alias ld-arm64="aarch64-linux-gnu-$bin"
+        alias "$bin-arm64"="aarch64-linux-gnu-$bin"
     fi
 done
 
