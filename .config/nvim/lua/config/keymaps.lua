@@ -51,3 +51,6 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- change variable names within scope.
 vim.keymap.set("n", "civ", "gdva{::s/<C-R>///gc<left><left><left>", { noremap = true })
 --vim.keymap.set("n", "civ", "gR gD:%s/<C-R>///gc<left><left><left>", { noremap = true })
+
+-- nvim terminal escape
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
