@@ -21,8 +21,10 @@ done
 
 alias ls="ls -1 --color=auto"
 alias ucsdvpn="sudo openconnect --user=jmillhis vpn.ucsd.edu"
-alias help="man"
 alias open="gio open"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+# For when I'm using too much MATLAB
+alias help="man"
+alias clc="clear"
 

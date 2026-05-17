@@ -1,9 +1,8 @@
 return {
     "https://github.com/neovim/nvim-lspconfig",
     config = function()
-
         vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = "*.c,*.cpp,*.h,*.hpp,*.lua",
+            pattern = "*.c,*.cpp,*.c++,*.h,*.hpp,*.h++,*.lua",
             callback = function()
                 vim.lsp.buf.format({ async = true })
             end,
