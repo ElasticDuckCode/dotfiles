@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Type=Application
+Name=AppImage Watcher
+Comment=Monitors a directory for new AppImages
+Exec=/home/jake/.local/bin/watch_appimage
+Icon=system-run
+Terminal=false

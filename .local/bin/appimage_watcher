@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+source "$HOME/.bashrc"
+source /etc/profile
+
+WATCH_DIR="$HOME/Applications/"
+
+# Works for GNOME
+/usr/bin/notify-send "Jake's AppImage Daemon" "Now monitoring $WATCH_DIR for new .AppImage files." -i system-run -u normal
+
+# Setup inotifywait to watch the "Applications" directory for new .AppImage files.
+/usr/bin/inotifywait -m -e create -e moved_to --format "%f" "$WATCH_DIR" | while read -r FILE
+do
+    if [[ "${FILE,,}" == *.appimage ]]; then
+        echo "Detected AppImage: $FILE"
+
+        chmod +x "$WATCH_DIR/$FILE"
+        $HOME/.local/bin/install_appimage $FILE
+
+        /usr/bin/notify-send "New AppImage Added" "File: $FILE\nEvent: $EVENT" -i software-update-available
+    fi
+done
