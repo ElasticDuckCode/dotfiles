@@ -1,7 +1,8 @@
 return {
     {
         "mason-org/mason.nvim",
-        opts = {}
+        opts = {},
+        enabled = true
     },
     {
         "mason-org/mason-lspconfig.nvim",
@@ -10,6 +11,6 @@ return {
             { "mason-org/mason.nvim", opts = {} },
             "neovim/nvim-lspconfig",
         },
+        enabled = true
     },
-    enabled = true
 }

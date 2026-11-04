@@ -1,3 +1,4 @@
 return {
-    'junegunn/goyo.vim'
+    'junegunn/goyo.vim',
+    enabled = true
 }

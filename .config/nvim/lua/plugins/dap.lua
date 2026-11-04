@@ -46,4 +46,5 @@ return {
         require('dapui').setup()
         require('nvim-dap-virtual-text').setup()
     end,
+    enabled = true
 }

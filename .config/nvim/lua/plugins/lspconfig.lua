@@ -65,5 +65,5 @@ return {
         vim.lsp.enable('clangd')
         vim.lsp.enable('lua_ls')
     end,
-    enable = true
+    enabled = true
 }
