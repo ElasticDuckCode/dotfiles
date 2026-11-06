@@ -1,4 +1,3 @@
-
 ;; user leader key (before lazy)
 (require "config.leader")
 
