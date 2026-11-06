@@ -1,5 +1,2 @@
-return {
-    "Olical/nfnl",
-    ft = "fennel", -- optional, or load on startup/config directory
-    lazy = false,
-}
+-- [nfnl] fnl/plugins/nfnl.fnl
+return {"Olical/nfnl", enabled = true, ft = "fennel", lazy = false}

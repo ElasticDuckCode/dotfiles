@@ -1,4 +1,2 @@
-return {
-    "Olical/conjure",
-    enabled = true
-}
+-- [nfnl] fnl/plugins/conjure.fnl
+return {"Olical/conjure", enabled = true}

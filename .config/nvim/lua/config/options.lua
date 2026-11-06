@@ -1,81 +1,39 @@
--- indentation
+-- [nfnl] fnl/config/options.fnl
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-
--- undo file
-vim.opt.swapfile = false --not once have I needed them, yet they annoy me always
-vim.opt.undodir = os.getenv("HOME") .. '/.local/share/nvim/undodir'
+vim.opt.swapfile = false
+vim.opt.undodir = (os.getenv("HOME") .. "/.local/share/nvim/undodir")
 vim.opt.undofile = true
-
--- remember cursor position
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-    pattern = { "*" },
-    callback = function()
-        vim.api.nvim_exec2('silent! normal! g`"zv', { output = true })
-    end,
-})
-
--- line wrapping
+local function _1_()
+  return vim.api.nvim_exec2("silent! normal! g`\"zv", {output = true})
+end
+vim.api.nvim_create_autocmd({"BufReadPost"}, {pattern = {"*"}, callback = _1_})
 vim.opt.wrap = true
 vim.opt.linebreak = true
-vim.o.showbreak = '⤷ '
-
--- number/sign/cursor line
+vim.o.showbreak = "\226\164\183 "
 vim.opt.number = false
 vim.wo.signcolumn = "yes"
-
--- screensplits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
--- buffers
 vim.opt.hidden = true
-
--- scrolling
 vim.opt.scrolljump = 0
 vim.opt.scrolloff = 8
-
--- statusline
 vim.opt.showmode = true
 vim.opt.laststatus = 3
-
--- search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-
--- update time
 vim.opt.updatetime = 50
-
--- netrw
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
-
--- errors/warnings
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+do
+  local signs = {Error = "\239\129\151 ", Warn = "\239\129\177 ", Hint = "\239\129\154 ", Info = "\239\129\170 "}
+  for type, icon in pairs(signs) do
+    local hl = ("DiagnosticSign" .. type)
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+  end
 end
-
-vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN] = " ",
-            [vim.diagnostic.severity.HINT] = " ",
-            [vim.diagnostic.severity.INFO] = " ",
-        },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-        },
-        numhl = {
-            [vim.diagnostic.severity.WARN] = 'WarningMsg',
-        },
-    },
-    virtual_text = { current_line = true },
-    virtual_lines = false
-})
+return vim.diagnostic.config({signs = {text = {[vim.diagnostic.severity.ERROR] = "\239\129\151 ", [vim.diagnostic.severity.WARN] = "\239\129\177 ", [vim.diagnostic.severity.HINT] = "\239\129\154 ", [vim.diagnostic.severity.INFO] = "\239\129\170 "}, linehl = {[vim.diagnostic.severity.ERROR] = "ErrorMsg"}, numhl = {[vim.diagnostic.severity.WARN] = "WarningMsg"}}, virtual_text = {current_line = true}, virtual_lines = false})

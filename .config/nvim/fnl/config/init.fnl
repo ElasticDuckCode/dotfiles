@@ -1,12 +1,12 @@
 ;; user leader key (before lazy)
-(require "config.leader")
+(require :config.leader)
 
 ;; setup plugin manager
-(require "config.lazy")
+(require :config.lazy)
 
 ;; user configuration
-(require "config.options")
-(require "config.keymaps")
+(require :config.options)
+(require :config.keymaps)
 
 ;; theme configuration
-(require "config.themes")
+(require :config.themes)
