@@ -1,69 +1,25 @@
-return {
-    "https://github.com/neovim/nvim-lspconfig",
-    config = function()
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = "*.c,*.cpp,*.c++,*.h,*.hpp,*.h++,*.lua",
-            callback = function()
-                vim.lsp.buf.format({ async = true })
-            end,
-        })
-
-        vim.lsp.config('clangd', {
-            settings = {
-                cmd = { "clangd --header-insertion=never" },
-            }
-        })
-
-        vim.lsp.config('lua_ls', {
-            on_init = function(client)
-                if client.workspace_folders then
-                    local path = client.workspace_folders[1].name
-                    if
-                        path ~= vim.fn.stdpath('config')
-                        and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
-                    then
-                        return
-                    end
-                end
-
-                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-                    runtime = {
-                        -- Tell the language server which version of Lua you're using (most
-                        -- likely LuaJIT in the case of Neovim)
-                        version = 'LuaJIT',
-                        -- Tell the language server how to find Lua modules same way as Neovim
-                        -- (see `:h lua-module-load`)
-                        path = {
-                            'lua/?.lua',
-                            'lua/?/init.lua',
-                        },
-                    },
-                    -- Make the server aware of Neovim runtime files
-                    workspace = {
-                        checkThirdParty = false,
-                        library = {
-                            vim.env.VIMRUNTIME
-                            -- Depending on the usage, you might want to add additional paths
-                            -- here.
-                            -- '${3rd}/luv/library'
-                            -- '${3rd}/busted/library'
-                        }
-                        -- Or pull in all of 'runtimepath'.
-                        -- NOTE: this is a lot slower and will cause issues when working on
-                        -- your own configuration.
-                        -- See https://github.com/neovim/nvim-lspconfig/issues/3189
-                        -- library = {
-                        --   vim.api.nvim_get_runtime_file('', true),
-                        -- }
-                    }
-                })
-            end,
-            settings = {
-                Lua = {}
-            }
-        })
-        vim.lsp.enable('clangd')
-        vim.lsp.enable('lua_ls')
-    end,
-    enabled = true
-}
+-- [nfnl] fnl/plugins/lspconfig.fnl
+local function _1_()
+  local function _2_()
+    return vim.lsp.buf.format({async = true})
+  end
+  vim.api.nvim_create_autocmd("BufWritePre", {pattern = "*.c,*.cpp,*.c++,*.h,*.hpp,*.h++,*.lua", callback = _2_})
+  vim.lsp.config("clangd", {settings = {cmd = {"clangd --header-insertion=never"}}})
+  local function _3_(client)
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      if ((path ~= vim.fn.stdpath("config")) and (vim.uv.fs_stat((path .. "/.luarc.json")) or vim.uv.fs_stat((path .. "/.luarc.jsonc")))) then
+        return
+      else
+      end
+    else
+    end
+    client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {runtime = {version = "LuaJIT", path = {["lua/?.lua"] = "lua/?/init.lua"}}, workspace = {library = {vim.env.VIMRUNTIME}, checkThirdParty = false}})
+    return nil
+  end
+  vim.lsp.config("lua_ls", {on_init = _3_, settings = {Lua = {}}})
+  vim.lsp.config("fennel_ls", {cmd = {"fennel-ls"}, filetypes = {"fennel"}, root_markers = {".nfnl.fnl", ".git", "init.fnl"}})
+  vim.lsp.enable("clangd")
+  return vim.lsp.enable("lua_ls")
+end
+return {"https://github.com/neovim/nvim-lspconfig", config = _1_, enabled = true}
