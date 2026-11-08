@@ -1,6 +1,12 @@
--- [nfnl] fnl/config/init.fnl
+--user leader key (before lazy)
 require("config.leader")
+
+--setup plugin manager
 require("config.lazy")
+
+--user configuration
 require("config.options")
 require("config.keymaps")
-return require("config.themes")
+
+--theme configuration
+require("config.themes")

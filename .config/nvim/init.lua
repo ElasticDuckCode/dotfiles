@@ -1,2 +1,1 @@
--- [nfnl] init.fnl
-return require("config")
+require("config")

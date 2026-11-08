@@ -1,4 +1,4 @@
--- [nfnl] fnl/config/leader.fnl
+-- leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-return nil
+

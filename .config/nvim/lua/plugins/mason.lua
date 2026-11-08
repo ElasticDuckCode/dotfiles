@@ -1,2 +1,16 @@
--- [nfnl] fnl/plugins/mason.fnl
-return {{"mason-org/mason.nvim", enabled = true, opts = {}}, {"mason-org/mason-lspconfig.nvim", dependencies = {{"mason-org/mason.nvim", opts = {}}, "neovim/nvim-lspconfig"}, enabled = true, opts = {}}}
+return {
+    {
+        "mason-org/mason.nvim",
+        opts = {},
+        enabled = true
+    },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+        enabled = true
+    },
+}

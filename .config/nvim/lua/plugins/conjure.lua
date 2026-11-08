@@ -1,2 +1,5 @@
--- [nfnl] fnl/plugins/conjure.fnl
-return {"Olical/conjure", enabled = true, ft = {"clojure", "lisp", "fennel"}, lazy = true}
+return {
+    "Olical/conjure",
+    ft = { "clojure", "lisp", "fennel" },
+    enabled = true
+}
