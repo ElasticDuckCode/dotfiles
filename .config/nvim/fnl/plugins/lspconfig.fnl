@@ -13,34 +13,28 @@
             (vim.lsp.config "lua_ls" {
                 :on_init 
                 (fn [client]
-                            (when client.workspace_folders
-                                (let [path (. client.workspace_folders 1 :name)]
-                                (when (and (~= path (vim.fn.stdpath "config")) 
-                                        (or (vim.uv.fs_stat (.. path "/.luarc.json"))
-                                            (vim.uv.fs_stat (.. path "/.luarc.jsonc"))))
-                                    (lua return)
-                                  )))
+                            (let [f (fn [] (set client.config.settings.Lua (vim.tbl_deep_extend "force" client.config.settings.Lua {
+                                             :runtime {
+                                                 :version "LuaJIT"
+                                                 :path {"lua/?.lua" "lua/?/init.lua"}}
+                                             :workspace {
+                                               :checkThirdParty false
+                                               :library [vim.env.VIMRUNTIME]
+                                             }})))]
 
-                            (set client.config.settings.Lua (vim.tbl_deep_extend "force" client.config.settings.Lua {
-                             :runtime {
-                                 :version "LuaJIT"
-                                 :path {"lua/?.lua" "lua/?/init.lua"}}
-                             :workspace {
-                               :checkThirdParty false
-                               :library [vim.env.VIMRUNTIME]
-                             }})))
+                                (if client.workspace_folders
+                                    (let [path (. client.workspace_folders 1 :name)]
+                                        (if (and (~= path (vim.fn.stdpath "config")) 
+                                                (or (vim.uv.fs_stat (.. path "/.luarc.json"))
+                                                    (vim.uv.fs_stat (.. path "/.luarc.jsonc"))))
+                                            nil
+                                            (f)))
+                                    (f))))
 
                 :settings {:Lua {}}})
 
-            (vim.lsp.config "fennel_ls" {
-              :cmd ["fennel-ls"]
-              :filetypes ["fennel"]
-              :root_markers [".nfnl.fnl" ".git" "init.fnl"]
-            })
-
             (vim.lsp.enable "clangd")
             (vim.lsp.enable "lua_ls")
-            ;(vim.lsp.enable "fennel_ls")
             ))
 
-:enabled true})
+:enabled false})
