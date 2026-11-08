@@ -8,9 +8,9 @@ return {
             callback = function(args)
                 local lang = vim.treesitter.language.get_lang(args.match)
                 if (lang and vim.treesitter.language.add(lang)) then
-                    return vim.treesitter.start(args.buf)
+                    vim.treesitter.start(args.buf)
                 end
-            end,
+            end
         })
     end,
     enabled = true

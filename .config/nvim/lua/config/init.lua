@@ -10,3 +10,6 @@ require("config.keymaps")
 
 --theme configuration
 require("config.themes")
+
+--language server configuration
+require("config.lsp")
