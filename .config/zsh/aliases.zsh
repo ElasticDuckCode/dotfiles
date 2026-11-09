@@ -12,6 +12,9 @@ if whence "fastfetch" > /dev/null; then
     alias neofetch="fastfetch"
 fi
 
+# Guile (Scheme Lisp)
+alias guile="guile3.0"
+
 # Arm Architecture compiler, assembler, and linker
 for bin in "gcc" "as" "ld"; do
     if whence "aarch64-linux-gnu-$bin" > /dev/null; then
