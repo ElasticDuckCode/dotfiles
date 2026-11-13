@@ -55,7 +55,13 @@ return {
 
                 -- configure third-party providers
                 providers = {
-                    conjure = { name = "conjure", module = "blink.compat.source" }
+                    conjure = {
+                        name = "conjure",
+                        module = "blink.compat.source",
+                        enabled = function()
+                            return vim.tbl_contains(vim.g['conjure#filetypes'] or {}, vim.bo.filetype)
+                        end
+                    }
                 }
             },
 
@@ -65,5 +71,6 @@ return {
             -- See the fuzzy documentation for more information
             fuzzy = { implementation = "rust" }
         },
+        enabled = false
     }
 }

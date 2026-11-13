@@ -54,6 +54,11 @@ vim.opt.updatetime = 50
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 
+-- autocompletion
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.o.winborder = "single"
+vim.o.pumborder = "single"
+
 -- errors/warnings
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do

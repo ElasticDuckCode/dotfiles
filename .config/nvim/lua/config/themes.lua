@@ -12,6 +12,7 @@ local function apply_colors()
     vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "Pmenu" })
     vim.api.nvim_set_hl(0, "TelescopePromptNormal", { link = "Pmenu" })
     vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "Pmenu" })
+    --vim.api.nvim_set_hl(0, "WinSeparator", { link = "NormalFloat" })
 end
 
 apply_colors()
