@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install" },
+		{ 'nvim-telescope/telescope-ui-select.nvim' }
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -17,7 +18,7 @@ return {
 			pickers = {
 				buffers = {
 					theme = "dropdown",
-					previewer = true,
+					previewer = false,
 				},
 				find_files = {
 					theme = "dropdown",
@@ -37,6 +38,7 @@ return {
 		}
 
 		telescope.load_extension("fzf")
+		telescope.load_extension("ui-select")
 
 		vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
 		vim.keymap.set("n", "<leader>sg", function() builtin.live_grep({ cwd = vim.fn.getcwd() }) end, {})

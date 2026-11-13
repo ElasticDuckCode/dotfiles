@@ -8,10 +8,11 @@ vim.cmd [[match DiffDelete /\%80v./]]
 
 local function apply_colors()
     vim.cmd [[ colorscheme kanagawa ]]
-    vim.api.nvim_set_hl(0, "Pmenu", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "Pmenu" })
-    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { link = "Pmenu" })
-    vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "Pmenu" })
+    --vim.api.nvim_set_hl(0, "Pmenu", { link = "Normal" })
+    --vim.api.nvim_set_hl(0, "Pmenu", { link = "StatusLineNC" })
+    vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "Normal" })
     --vim.api.nvim_set_hl(0, "WinSeparator", { link = "NormalFloat" })
 end
 

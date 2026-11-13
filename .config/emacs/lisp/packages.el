@@ -7,15 +7,27 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-(use-package sicp :ensure t)
+(use-package sicp
+  :ensure t)
 
-(use-package vterm :ensure t)
+(use-package vterm
+  :ensure t)
 
-(use-package osx-trash :ensure t)
+(use-package osx-trash
+  :ensure t)
 
-(use-package geiser-mit :ensure t)
+(use-package geiser-mit
+  :ensure t)
 
-(use-package geiser-guile :ensure t)
+(use-package geiser-guile
+  :ensure t)
+
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "sbcl")
+  :config
+  (slime-setup '(slime-fancy)))
 
 (use-package fzf
   :ensure t
@@ -72,9 +84,6 @@
   :config
   (load-theme 'kanagawa-dragon t))
 
-(use-package slime
+(use-package rainbow-delimiters
   :ensure t
-  :init
-  (setq inferior-lisp-program "sbcl")
-  :config
-  (slime-setup '(slime-fancy)))
+  :hook (prog-mode . rainbow-delimiters-mode))

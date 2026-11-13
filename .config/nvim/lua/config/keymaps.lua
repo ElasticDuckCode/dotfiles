@@ -1,10 +1,30 @@
--- file explorer
-vim.keymap.set("n", "<leader>pn", vim.cmd.Ex)
+-- netrw open kemaps
+vim.keymap.set("n", "<leader><CR>", vim.cmd.Ex)
+vim.keymap.set("n", "<leader><Tab>", vim.cmd.Tex)
+
+-- netrw tab nagivation
+for i = 1, 9 do
+    local key = string.format("<leader>%d", i)
+    local cmd = string.format("%dgt", i)
+    vim.keymap.set("n", key, cmd);
+end
 
 -- disable arrow keys
 for _, key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
     vim.keymap.set({ "", "!" }, key, "<Nop>", { noremap = true })
 end
+
+-- run shell command quicker
+vim.keymap.set("n", "!", function()
+    local opts = { prompt = "> ", default = "" }
+    vim.ui.input(opts, function(input)
+        if input then
+            --vim.cmd(":10 split | term " .. input)
+            vim.cmd(":term " .. input)
+            vim.cmd.startinsert()
+        end
+    end)
+end)
 
 -- make these commands not jump view
 vim.keymap.set("n", "J", "mzJ`z")
@@ -17,17 +37,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("i", "<C-CR>", "<CR>")
 vim.keymap.set("n", "<C-CR>", "<CR>")
 
--- open netrw
-vim.keymap.set("n", "<leader><CR>", "<cmd>silent Explore<CR>")
-vim.keymap.set("n", "<leader><Tab>", "<cmd>silent Texplore<CR>")
-
--- netrw tab nagivation
-for i = 1, 9 do
-    local key = string.format("<leader>%d", i)
-    local cmd = string.format("%dgt", i)
-    vim.keymap.set("n", key, cmd);
-end
-
 -- move lines in visual mode
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
@@ -37,9 +46,11 @@ vim.api.nvim_create_user_command("W", "w", {})
 vim.api.nvim_create_user_command("Q", "q", {})
 vim.api.nvim_create_user_command("X", "x", {})
 
--- yank into system clipboard when leader yanked
+-- yank/paste to/from system clipboard when leader used
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+vim.keymap.set("n", "<leader>P", [["+P]])
 
 -- don't want
 vim.keymap.set("n", "Q", "<nop>")

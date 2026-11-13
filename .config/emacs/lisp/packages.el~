@@ -16,6 +16,12 @@
 (use-package osx-trash
   :ensure t)
 
+(use-package geiser-mit
+  :ensure t)
+
+(use-package geiser-guile
+  :ensure t)
+
 (use-package fzf
   :ensure t
   :bind

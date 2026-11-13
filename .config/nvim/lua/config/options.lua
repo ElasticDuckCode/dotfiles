@@ -53,12 +53,13 @@ vim.opt.updatetime = 50
 -- netrw
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
+vim.g.netrw_preview = 1
 
 -- autocompletion
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.opt.complete:append("o") -- include omni
-vim.o.winborder = "single"
-vim.o.pumborder = "single"
+-- vim.o.winborder = "single"
+-- vim.o.pumborder = "single"
 
 -- errors/warnings
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
