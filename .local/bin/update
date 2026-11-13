@@ -1,0 +1,57 @@
+#!/usr/bin/env sh
+
+update_kitty() {
+    if [[ $(uname) == "Darwin" ]]; then
+        echo "This script can only update kitty on Linux."
+    else
+        KITTY_ROOT=$HOME/.opt
+        KITTY_PATH=$KITTY_ROOT/kitty.app
+        KITTY_DEST=$HOME/.opt/bin
+
+        # Backup kitty
+        if [ -d "$KITTY_PATH" ];
+        then
+            mv $KITTY_PATH "${KITTY_PATH}.old"
+        fi
+
+        # Download kitty
+        curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=$KITTY_ROOT
+        ln -sf $KITTY_PATH/bin/kitty $KITTY_PATH/bin/kitten $KITTY_DEST
+
+        # Integrate kitty to desktop
+        cp $KITTY_PATH/share/applications/kitty.desktop ~/.local/share/applications/
+        cp $KITTY_PATH/share/applications/kitty-open.desktop ~/.local/share/applications/
+        sed -i "s|Icon=kitty|Icon=$KITTY_PATH/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+        sed -i "s|Exec=kitty|Exec=$KITTY_PATH/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+    fi
+}
+
+
+update_nvim() {
+
+    DIR=$HOME/.opt/bin
+    FILE=$DIR/nvim
+
+    if [ -f "$FILE" ];
+    then
+        cp $FILE "${FILE}.old"
+    fi
+
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+    chmod +x nvim-linux-x86_64.appimage
+    mkdir -p $DIR
+    mv nvim-linux-x86_64.appimage $FILE
+
+}
+
+case "$1" in
+    nvim)
+        update_nvim
+        ;;
+    kitty)
+        update_kitty
+        ;;
+    *)
+        echo "Script cannot update $1."
+        ;;
+esac
