@@ -7,14 +7,15 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-(use-package sicp
-  :ensure t)
+(use-package sicp :ensure t)
 
-(use-package vterm
-  :ensure t)
+(use-package vterm :ensure t)
 
-(use-package osx-trash
-  :ensure t)
+(use-package osx-trash :ensure t)
+
+(use-package geiser-mit :ensure t)
+
+(use-package geiser-guile :ensure t)
 
 (use-package fzf
   :ensure t

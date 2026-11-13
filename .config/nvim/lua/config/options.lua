@@ -56,6 +56,7 @@ vim.g.netrw_banner = 0
 
 -- autocompletion
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.opt.complete:append("o") -- include omni
 vim.o.winborder = "single"
 vim.o.pumborder = "single"
 

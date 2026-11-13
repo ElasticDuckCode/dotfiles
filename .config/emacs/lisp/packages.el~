@@ -53,15 +53,14 @@
 (with-eval-after-load 'evil
   (evil-set-leader 'normal (kbd "SPC"))
   (evil-ex-define-cmd "Explore" 'dired-jump)
-  ;(evil-define-key 'normal 'global (kbd "<leader>ff") 'find-file)
-  ;(evil-define-key 'normal 'global (kbd "<leader>bb") 'switch-to-buffer)
+  (evil-define-key 'normal 'global (kbd "<leader>ff") 'find-file)
+  (evil-define-key 'normal 'global (kbd "<leader>bb") 'switch-to-buffer)
   (setq evil-insert-state-cursor 'box)
 
   (with-eval-after-load 'fzf
-  (evil-define-key 'normal 'global (kbd "<leader>ff") #'fzf-find-file)
-  (evil-define-key 'normal 'global (kbd "<leader>bb") #'fzf-switch-buffer)
-  ;(define-key evil-motion-state-map (kbd "C-f") #'fzf-find-file)
-  ))
+  ;(evil-define-key 'normal 'global (kbd "<leader>ff") #'fzf-find-file)
+  ;(evil-define-key 'normal 'global (kbd "<leader>bb") #'fzf-switch-buffer)
+  (define-key evil-motion-state-map (kbd "C-f") #'fzf-find-file)))
 
 (with-eval-after-load 'osx-trash
   (when (eq system-type 'darwin)
