@@ -9,6 +9,17 @@ for i = 1, 9 do
     vim.keymap.set("n", key, cmd);
 end
 
+-- netrw keymaps
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "netrw",
+    callback = function()
+        local opts = { buffer = true, remap = true, silent = true }
+        vim.keymap.set("n", "<Tab>", "mf", opts)
+        vim.keymap.set("v", "<Tab>", ":normal mf<CR>", opts)
+        vim.keymap.set("n", "<BS>", "mF", opts)
+    end
+})
+
 -- disable arrow keys
 for _, key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
     vim.keymap.set({ "", "!" }, key, "<Nop>", { noremap = true })
@@ -65,3 +76,16 @@ vim.keymap.set("n", "civ", "gdva{::s/<C-R>///gc<left><left><left>", { noremap = 
 
 -- nvim terminal escape
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true })
+
+-- nvim terminal force quit even if running (I don't run cruital tasks within nvim term)
+vim.api.nvim_create_autocmd("TermEnter", {
+    callback = function()
+        vim.cmd.cnoreabbrev("bd", "bd!")
+    end
+})
+
+-- nvim diagnostics
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end)
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)

@@ -40,10 +40,10 @@ return {
 		telescope.load_extension("fzf")
 		telescope.load_extension("ui-select")
 
-		vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
-		vim.keymap.set("n", "<leader>sg", function() builtin.live_grep({ cwd = vim.fn.getcwd() }) end, {})
-		vim.keymap.set("n", "<leader>sb", builtin.buffers, {})
-		vim.keymap.set("n", "<leader>sh", builtin.help_tags, {})
+		vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+		vim.keymap.set("n", "<leader>g", function() builtin.live_grep({ cwd = vim.fn.getcwd() }) end, {})
+		vim.keymap.set("n", "<leader>b", builtin.buffers, {})
+		vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
 	end,
 	enabled = true
 }

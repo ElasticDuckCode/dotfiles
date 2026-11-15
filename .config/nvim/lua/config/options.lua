@@ -52,8 +52,11 @@ vim.opt.updatetime = 50
 
 -- netrw
 vim.g.netrw_browse_split = 0
+vim.g.netrw_keepdir = 0
 vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3 -- show as tree, use 'gn' to set folder as new root
 vim.g.netrw_preview = 1
+vim.g.netrw_wiw = 1
 
 -- autocompletion
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
