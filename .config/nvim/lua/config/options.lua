@@ -89,3 +89,15 @@ vim.diagnostic.config({
     virtual_text = { current_line = true },
     virtual_lines = false
 })
+
+-- trailing whitespace
+-- vim.o.list = true
+-- vim.o.listchars = 'tab:» ,lead:•,trail:•'
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern  = { "*" },
+    callback = function()
+        local cursor = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", cursor)
+    end
+})

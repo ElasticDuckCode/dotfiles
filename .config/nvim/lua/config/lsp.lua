@@ -55,14 +55,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Lips don't actually use LSP, so need to autoformat differently
--- vim.api.nvim_create_autocmd("FileType", {
---     group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
---     pattern = vim.g["conjure#filetypes"],
---     callback = function()
---         vim.api.nvim_create_autocmd("BufWritePre", {
---             callback = function()
---                 vim.cmd [[ silent! normal! migg=G`i ]]
---             end
---         })
---     end
--- })
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+    pattern = vim.g["conjure#filetypes"],
+    callback = function()
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            callback = function()
+                local cursor = vim.fn.getpos(".")
+                vim.cmd [[ silent! normal! migg=G`i ]]
+                vim.fn.setpos(".", cursor)
+            end
+        })
+    end
+})
