@@ -61,8 +61,8 @@ vim.g.netrw_wiw = 1
 -- autocompletion
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.opt.complete:append("o") -- include omni
--- vim.o.winborder = "single"
--- vim.o.pumborder = "single"
+vim.o.winborder = "none"
+vim.o.pumborder = "none"
 
 -- errors/warnings
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -91,13 +91,13 @@ vim.diagnostic.config({
 })
 
 -- trailing whitespace
+local cleanwhitespace = function()
+    local line = vim.fn.getpos("w0")
+    local cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos(".", cursor)
+    vim.fn.setpos("w0", line)
+end
 -- vim.o.list = true
 -- vim.o.listchars = 'tab:» ,lead:•,trail:•'
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern  = { "*" },
-    callback = function()
-        local cursor = vim.fn.getpos(".")
-        vim.cmd([[%s/\s\+$//e]])
-        vim.fn.setpos(".", cursor)
-    end
-})
+vim.keymap.set("n", "<leader>w", cleanwhitespace)

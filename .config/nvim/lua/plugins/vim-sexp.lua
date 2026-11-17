@@ -3,5 +3,5 @@ return {
     config = function()
         vim.g.sexp_enable_insert_mode_mappings = 0
     end,
-    enabled = false,
+    enabled = true,
 }

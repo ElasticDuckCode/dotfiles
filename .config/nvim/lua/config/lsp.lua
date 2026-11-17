@@ -59,6 +59,7 @@ vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
     pattern = vim.g["conjure#filetypes"],
     callback = function()
+        vim.keymap.set("n", "<C-c>", ":ConjureSchemeInterrupt<CR>", { silent = true })
         vim.api.nvim_create_autocmd("BufWritePre", {
             callback = function()
                 local cursor = vim.fn.getpos(".")
