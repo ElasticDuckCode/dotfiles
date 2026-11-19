@@ -22,8 +22,9 @@ for bin in "gcc" "as" "ld"; do
     fi
 done
 
-alias ls="ls -1 --color=auto"
-alias la="ls -la --color=auto"
+alias ls="ls -1 --color=auto --group-directories-first"
+alias la="ls -la --color=auto --group-directories-first"
+alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias ucsdvpn="sudo openconnect --user=jmillhis vpn.ucsd.edu"
 alias open="gio open"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
