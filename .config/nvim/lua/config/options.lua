@@ -58,6 +58,14 @@ vim.g.netrw_liststyle = 3 -- show as tree, use 'gn' to set folder as new root
 vim.g.netrw_preview = 1
 vim.g.netrw_wiw = 1
 
+-- If installed oil.nvim, replace netrw
+if vim.fn.exists(":Oil") == 2 then
+    vim.api.nvim_create_user_command("Explore", "Oil", { nargs = "?", complete = "dir" })
+    vim.api.nvim_create_user_command("Sexplore", "split | Oil", { nargs = "?", complete = "dir" })
+    vim.api.nvim_create_user_command("Vexplore", "vsplit | Oil", { nargs = "?", complete = "dir" })
+    vim.api.nvim_create_user_command("Texplore", "tabnew | Oil", { nargs = "?", complete = "dir" })
+end
+
 -- autocompletion
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.opt.complete:append("o") -- include omni
@@ -92,11 +100,9 @@ vim.diagnostic.config({
 
 -- trailing whitespace
 local cleanwhitespace = function()
-    local line = vim.fn.getpos("w0")
     local cursor = vim.fn.getpos(".")
     vim.cmd([[%s/\s\+$//e]])
     vim.fn.setpos(".", cursor)
-    vim.fn.setpos("w0", line)
 end
 -- vim.o.list = true
 -- vim.o.listchars = 'tab:» ,lead:•,trail:•'
