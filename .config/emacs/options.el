@@ -27,7 +27,7 @@
 
 ;; Set font
 (add-to-list 'default-frame-alist                                               
-	     '(font . "BlexMono Nerd Font-15:semibold"))            
+	     '(font . "BlexMono Nerd Font-18:semibold"))            
 
 ;; Move backups/auto-saves/lock-files to same folder
 (let ((backup-dir (expand-file-name "backups/" user-emacs-directory)))          

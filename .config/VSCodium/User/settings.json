@@ -33,9 +33,43 @@
     "terminal.integrated.fontSize": 17,
     "terminal.integrated.fontWeight": "500",
 
-    "vscode-neovim.neovimExecutablePaths.linux": "/home/jake/.opt/bin/nvim",
-    "extensions.experimental.affinity": {
-      "asvetliakov.vscode-neovim": 1
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+      {
+        "before": ["j", "j"],
+        "after": ["<Esc>"]
+      }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<leader>", "d"],
+        "after": ["d", "d"]
+      },
+      {
+        "before": ["<C-n>"],
+        "commands": [":nohl"]
+      },
+      {
+        "before": ["K"],
+        "commands": ["lineBreakInsert"],
+        "silent": true
+      }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+      "<C-a>": false,
+      "<C-f>": false
     },
-    "window.menuBarVisibility": "compact",
+    // To improve performance
+    "extensions.experimental.affinity": {
+      "vscodevim.vim": 1
+    },
+
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "~/.opt/bin/nvim",
+    "explorer.confirmDelete": false
 }
