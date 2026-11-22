@@ -1,0 +1,14 @@
+window-decoration = none
+window-padding-x = 2
+window-padding-y = 8
+font-family = BlexMono Nerd Font
+font-thicken = true
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Italic
+font-style-bold-italic = Bold Italic
+font-size = 18
+font-feature = +zero
+theme = Kanagawa Dragon
+confirm-close-surface = false
+command = /bin/zsh --login -l -c "tmux attach || tmux new "
