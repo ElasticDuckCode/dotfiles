@@ -106,4 +106,4 @@ local cleanwhitespace = function()
 end
 -- vim.o.list = true
 -- vim.o.listchars = 'tab:» ,lead:•,trail:•'
-vim.keymap.set("n", "<leader>w", cleanwhitespace)
+vim.keymap.set("n", "<leader>cw", cleanwhitespace)

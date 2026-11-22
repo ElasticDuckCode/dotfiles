@@ -1,7 +1,8 @@
 -- Enable LSPs
-vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("lua_ls")
 vim.lsp.enable("pylsp")
+vim.lsp.enable("racket_langserver")
 
 -- Buffer Attachment (keybinds, auto-completion, linting)
 vim.api.nvim_create_autocmd('LspAttach', {
