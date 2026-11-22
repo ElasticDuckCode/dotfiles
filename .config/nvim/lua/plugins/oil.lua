@@ -6,7 +6,7 @@ return {
             signcolumn = "yes"
         },
         view_options = {
-            show_hidden = false,
+            show_hidden = true,
             is_hidden_file = function(name, bufnr)
                 if name == "." or name == ".." then
                     return false
