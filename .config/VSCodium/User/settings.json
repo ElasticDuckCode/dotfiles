@@ -71,5 +71,9 @@
 
     "vim.enableNeovim": true,
     "vim.neovimPath": "~/.opt/bin/nvim",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "magicRacket.languageServer.command": "/home/jake/.local/bin/racket",
+    "magicRacket.general.racketPath": "/home/jake/.local/bin/racket",
+    "racketdap.racketExecutable": "/home/jake/.local/bin/racket",
+    "magicRacket.general.racoPath": "/home/jake/.local/bin/raco"
 }
